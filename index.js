@@ -100,6 +100,18 @@ document.addEventListener("DOMContentLoaded", ()  => {
             alert("Please enter a task.");
             return;
         }
+
+        if (todoText.length < 10) {
+        alert("La tarea debe tener mínimo 10 caracteres.");
+        return;
+        }
+
+        if (/^\d+$/.test(todoText)) {
+        alert("La tarea no puede ser solo números.");
+        return;
+    }
+
+
         console.log("Task to add:", todoText);
 
         const task = {
