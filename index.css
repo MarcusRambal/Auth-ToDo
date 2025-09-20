@@ -1,0 +1,59 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Header básico arriba */
+header {
+  border-bottom: 1px solid #000; /* línea simple */
+  padding: 10px 0;
+}
+
+header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;   /* espacio entre los enlaces */
+}
+
+header nav a {
+  text-decoration: none;
+  color: black;
+}
+
+/* Contenido */
+h1 {
+  margin: 20px 0;
+}
+
+.todo-container {
+  margin: 0 auto;
+  width: 300px;
+}
+
+#todo-form {
+  margin-bottom: 20px;
+}
+
+#todo-input {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 10px;
+}
+
+#task-button {
+  padding: 6px 12px;
+}
+
+#todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+#todo-list li {
+  margin: 8px 0;
+}
