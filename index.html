@@ -3,11 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Auth-ToDo</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     
+    <h1>Tareas</h1>
+
+    <div class="todo-container">
+        <form id="todo-form">
+            <input type="text" id="todo-input" placeholder="Nueva tarea..." required>
+            <button type="submit">Agregar</button>
+        </form>
+        <ul id="todo-list"></ul>
+    </div>
+
+    <div class="taks-container">
+        <!-- Aquí se mostrarán las tareas -->
+    </div>
 
     <script src="index.js"></script>
 </body>
