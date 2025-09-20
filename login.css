@@ -1,0 +1,17 @@
+
+body {
+    display: grid;
+    place-items: center;
+}
+
+.login-form{
+    display: grid; 
+    width: 10%;
+    gap: 15px;
+    border-radius: 8px;
+}
+
+.login-form button, input{
+    margin-top: 10px;
+    border-radius: 5px;
+}
