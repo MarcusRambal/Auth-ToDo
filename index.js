@@ -101,10 +101,10 @@ document.addEventListener("DOMContentLoaded",  async ()  => {
                 taskItem.innerHTML = `
                     <input type="checkbox" ${task.done ? "checked" : ""} data-id="${task.id}" class="task-checkbox">
                     <input type="text" value="${task.text}" data-id="${task.id}" class="task-edit-input ${task.done ? "task-done" : ""}">
-                    <button data-id="${task.id}" class="delete-button">Delete</button>
+                    <button data-id="${task.id}" class="delete-button">Borrar</button>
                     <div class="task-dates">
-                        <span class="task-created">Created: ${createdDate}</span>
-                        <span class="task-updated">Updated: ${updatedDate}</span>
+                        <span class="task-created">Creado: ${createdDate}</span>
+                        <span class="task-updated">Actualizado: ${updatedDate}</span>
                     </div>
                 `;
                 tasklist.appendChild(taskItem);
@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded",  async ()  => {
         e.preventDefault();
 
         const todoInput = document.getElementById("todo-input");
-        const todoText = todoInput.value;
+        const todoText = todoInput.value.trim();
 
         if (todoText.trim() === "") {
             alert("Please enter a task.");
