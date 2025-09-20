@@ -1,10 +1,21 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Header  */
 header {
   border-bottom: 1px solid #000;
   padding: 10px 0;
 }
 header nav ul {
   list-style: none;
-  display: flex;            
+  display: flex;           
   justify-content: center;
   gap: 20px;
   margin: 0;
@@ -14,35 +25,160 @@ header nav a {
   text-decoration: none;
   color: #000;
 }
+
+/* Botón de cerrar sesion */
+#auth-btn {
+  padding: 5px 11px;
+  border: none;
+  border-radius: 6px;
+  background: #cd0000;   
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+#auth-btn:hover { background: #a00000; }
+
+/* Título */
 h1 {
   text-align: center;
   margin: 20px 0;
 }
 
+/* Contenedor del formulario centrado */
 .todo-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 16px;
 }
+
+/* Formulario */
 #todo-form {
   display: flex;
+  gap: 10px; /*  espacio entre botones */
+}
+#todo-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+#todo-input:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+
+/* Agregar  */
+#task-button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+#task-button:hover { background: #1e40af; }
+
+/* API  */
+#fetch-button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #f59e0b; /* naranja */
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+#fetch-button:hover { background: #d97706; }
+
+/* CONTENEDOR DE LISTA — Flexbox */
+#todo-list {
+  display: flex;         
+  flex-direction: column;  
+  gap: 16px;             
+  list-style: none;
+  padding: 0;
+  align-items: center;   
+}
+
+/* Estilo de cada tarea */
+#todo-list > li {
+  width: 360px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px;
+  background: #f9f9f9;
+  text-align: left;
+  display: flex;
+  flex-direction: column;   
+}
+
+#todo-list > li .task-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 8px;
+}
+
+/* separación entre  botones dentro de la tarea */
+#todo-list li button + button {
+  margin-left: 8px;
+}
+#todo-list li button:hover { background: #1e40af; }
+
+/* Delete  */
+.delete-button {
+  background: #cd0000;
+  border: none;
+  padding: 3px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  font-size: 12px;
+  transition: background 0.2s ease-in-out;
+}
+.delete-button:hover { background: #a00000; }
+
+/* Fechas (Created / Updated) debajo con separación */
+#todo-list > li span,
+#todo-list > li div {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #555;
 }
 
 .task-container {
   text-align: center;
 }
-
-/* FlexBox */
-#todo-list {
-  display: flex;
-  flex-direction: column; 
-  gap: 8px;
-  list-style: none;
-  padding: 0;
-  align-items: center;    
+.task-container > * {
+  margin: 16px 0;
 }
 
-#todo-list li {
-  width: 360px;            
-  text-align: left;     
+/* --- Caja--- */
+.todo-container {
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #ffffff;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px 12px 0 0;       
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+}
+
+.task-container {
+  max-width: 860px;
+  margin: -1px auto 24px;             
+  background: #ffffff;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-top: none;                    
+  border-radius: 0 0 12px 12px;        
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
 }
