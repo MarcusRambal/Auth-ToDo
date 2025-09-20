@@ -46,3 +46,172 @@ h1 {
   width: 360px;            
   text-align: left;     
 }
+
+
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Body */
+body {
+  background: #f4f6f9;
+  color: #333;
+  line-height: 1.6;
+  padding: 0 20px;
+}
+
+/* Header */
+header {
+  background: #2d3e50;
+  color: #fff;
+  padding: 15px 20px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 20px;
+  transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+  color: #f39c12;
+}
+
+#auth-btn {
+  background: #f39c12;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+#auth-btn:hover {
+  background: #d35400;
+}
+
+/* Título */
+h1 {
+  text-align: center;
+  margin: 25px 0;
+  font-size: 2.2rem;
+  color: #2d3e50;
+}
+
+/* Contenedor principal */
+.todo-container {
+  max-width: 600px;
+  margin: 0 auto 40px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Formulario */
+#todo-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#todo-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+#todo-input:focus {
+  border-color: #3498db;
+}
+
+/* Botones */
+#task-button,
+#fetch-button {
+  background: #3498db;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+#task-button:hover,
+#fetch-button:hover {
+  background: #2980b9;
+}
+
+/* Lista */
+#todo-list {
+  list-style: none;
+}
+
+#todo-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ecf0f1;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: transform 0.2s ease;
+}
+
+#todo-list li:hover {
+  transform: scale(1.02);
+}
+
+/* Texto de la tarea */
+.task-done {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* Checkbox */
+.task-checkbox {
+  margin-right: 12px;
+}
+
+/* Botón eliminar */
+.delete-button {
+  background: #e74c3c;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.delete-button:hover {
+  background: #c0392b;
+}
+
+/* Fechas */
+.task-dates {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 6px;
+}
