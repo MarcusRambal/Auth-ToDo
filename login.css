@@ -1,17 +1,25 @@
-
 body {
+    margin:0;
+    height: 100%;
+    width: 100%;
     display: grid;
     place-items: center;
 }
 
 .login-form{
     display: grid; 
-    width: 10%;
+    width: 100%;
+    max-width: 350px;
     gap: 15px;
     border-radius: 8px;
 }
 
+.login-form > div {
+    display: flex;
+    flex-direction: column;
+}
+
 .login-form button, input{
-    margin-top: 10px;
+    margin-top: 15px;
     border-radius: 5px;
 }
