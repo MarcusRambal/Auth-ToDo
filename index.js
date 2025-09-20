@@ -104,13 +104,19 @@ document.addEventListener("DOMContentLoaded", ()  => {
 
         const task = {
             id: getNextId(),
-            text:todoText,
+            text:todoText.trim(),
             done: false,
             createdAt: Date.now(),
             updatedAt: Date.now()
         }
 
        const tasks = getTasks();
+
+       if (tasks.find(t => t.text.trim().toLowerCase() === todoText.trim().toLowerCase())) {
+            alert("Task already exists.");
+            return;
+        }   
+
         tasks.push(task);
         saveTasks(tasks);
         console.log("Task added:", task);
