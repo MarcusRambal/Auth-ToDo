@@ -8,9 +8,23 @@ updatedAt: number
 }
 */
 
-document.addEventListener("DOMContentLoaded", ()  => {
-    const taskButton = document.getElementById("task-button");
+async function getApiData() {
+    try {
+        const response = await fetch("https://dummyjson.com/c/28e8-a101-4223-a35c");
+        const data = await response.json();
+        console.log("API response:", data);
 
+        return data
+    } catch (error) {
+        console.error("Error al consultar la API:", error);
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded",  async ()  => {
+    
+    const taskButton = document.getElementById("task-button");
+    const fetchButton = document.getElementById("fetch-button");    
 
     //functions 
     function getTasks() {
@@ -27,6 +41,32 @@ document.addEventListener("DOMContentLoaded", ()  => {
         const ids = tasks.map(task => task.id);
         const maxId = ids.length > 0 ? Math.max(...ids) : 0;
         return maxId + 1;
+    }
+
+    function checkApiId(apiTasks) {
+        const localTasks = getTasks();
+        const localIds = localTasks.map(task => task.id);
+
+        let nextId = localIds.length > 0 ? Math.max(...localIds) + 1 : 1;
+
+        return apiTasks.map(apiTask => {
+            if (localIds.includes(apiTask.id)) {
+                apiTask.id = nextId++;
+            }
+            return apiTask;
+        });
+    }
+
+    function mergeTasks(apiTasks) {
+        const localTasks = getTasks();
+        const mergedTasks = [...localTasks];
+        apiTasks.forEach(apiTask => {
+            if (!localTasks.find(task => task.id === apiTask.id)) {
+                mergedTasks.push(apiTask);
+            }
+        });
+        saveTasks(mergedTasks);
+        renderTaks();
     }
 
     function renderTaks() {
@@ -48,7 +88,7 @@ document.addEventListener("DOMContentLoaded", ()  => {
                 taskItem.className = "task-item";
                 taskItem.innerHTML = `
                     <input type="checkbox" ${task.done ? "checked" : ""} data-id="${task.id}" class="task-checkbox">
-                    <span class="${task.done ? "task-done" : ""}">${task.text}</span>
+                    <input type="text" value="${task.text}" data-id="${task.id}" class="task-edit-input ${task.done ? "task-done" : ""}">
                     <button data-id="${task.id}" class="delete-button">Delete</button>
                     <div class="task-dates">
                         <span class="task-created">Created: ${createdDate}</span>
@@ -82,6 +122,42 @@ document.addEventListener("DOMContentLoaded", ()  => {
         const task = tasks.find(t => t.id === id);
         if (task) {
             task.done = e.target.checked;
+            task.updatedAt = Date.now();
+            saveTasks(tasks);
+            renderTaks();
+        }
+    }
+    // Editar texto
+    if (e.target.classList.contains("task-edit-input")) {
+        const id = parseInt(e.target.getAttribute("data-id"));
+        const newText = e.target.value.trim();
+        const tasks = getTasks();
+
+        // Validaciones
+        if (newText === "") {
+            alert("El texto no puede estar vacío.");
+            renderTaks();
+            return;
+        }
+        if (newText.length < 10) {
+            alert("La tarea debe tener mínimo 10 caracteres.");
+            renderTaks();
+            return;
+        }
+        if (/^\d+$/.test(newText)) {
+            alert("La tarea no puede ser solo números.");
+            renderTaks();
+            return;
+        }
+        if (tasks.find(t => t.text.trim().toLowerCase() === newText.toLowerCase() && t.id !== id)) {
+            alert("La tarea ya existe.");
+            renderTaks();
+            return;
+        }
+
+        const task = tasks.find(t => t.id === id);
+        if (task) {
+            task.text = newText;
             task.updatedAt = Date.now();
             saveTasks(tasks);
             renderTaks();
@@ -139,6 +215,14 @@ document.addEventListener("DOMContentLoaded", ()  => {
 
         
         renderTaks();
+    })
+
+    fetchButton.addEventListener("click",  async (e) => {
+        e.preventDefault();
+        const apiTasks = await getApiData();
+        const newApiData = checkApiId(apiTasks);
+        console.log("API Tasks:", apiTasks);
+        mergeTasks(newApiData);
     })
     renderTaks();
 })
