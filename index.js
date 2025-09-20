@@ -8,6 +8,18 @@ updatedAt: number
 }
 */
 
+const authButton = document.getElementById("auth-btn")
+if (localStorage.getItem("isAuthenticated") === "true") {
+    authButton.textContent = "Cerrar sesión"
+    authButton.addEventListener("click", () => {
+        localStorage.removeItem("isAuthenticated")
+        localStorage.removeItem("username")
+        window.location.href = "login.html"
+    })
+}else {
+    window.location.href = "login.html" 
+}
+
 async function getApiData() {
     try {
         const response = await fetch("https://dummyjson.com/c/28e8-a101-4223-a35c");
